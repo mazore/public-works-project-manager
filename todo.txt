@@ -1,5 +1,5 @@
 TODO:
-- Split date and time into different columns
+- Display city in table
 - Refresh button retrieves new projects
 - Show new projects highlighted
 - Favorite and filter options

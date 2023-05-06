@@ -8,7 +8,13 @@ def parse_datetime(str):
     return datetime.strptime(no_timezone, r'%m/%d/%Y @ %I:%M %p')
 
 
-def format_datetime(dt):
+def format_date(dt):
     if dt == datetime.min:
         return None
-    return datetime.strftime(dt, r'%B %d %Y, %I:%M %p').replace(' 0', ' ')
+    return datetime.strftime(dt, r'%b %d %Y').replace(' 0', ' ')
+
+
+def format_time(dt):
+    if dt == datetime.min:
+        return None
+    return datetime.strftime(dt, r'%I:%M %p').strip('0')

@@ -27,12 +27,13 @@ class Table(QTableWidget):
                 })
         flattened_data.sort(key=lambda project: project['dt'], reverse=True)
 
-        self.setColumnCount(3)
+        self.setColumnCount(4)
         self.setRowCount(len(flattened_data))
         for i, project in enumerate(flattened_data):
-            self.setCellWidget(i, 0, table_attributes.Time(project))
-            self.setCellWidget(i, 1, table_attributes.Name(project))
-            self.setCellWidget(i, 2, table_attributes.Url(project))
+            self.setCellWidget(i, 0, table_attributes.Date(project))
+            self.setCellWidget(i, 1, table_attributes.Time(project))
+            self.setCellWidget(i, 2, table_attributes.Name(project))
+            self.setCellWidget(i, 3, table_attributes.Url(project))
 
     def extra_setup(self):
         self.verticalHeader().hide()
@@ -41,11 +42,12 @@ class Table(QTableWidget):
         self.setSelectionMode(QTableView.SelectionMode.NoSelection)
         self.setVerticalScrollMode(QTableView.ScrollMode.ScrollPerPixel)
 
-        self.setHorizontalHeaderLabels(['Time', 'Name', 'URL'])
+        self.setHorizontalHeaderLabels(['Date', 'Time', 'Name', 'URL'])
         header = self.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        header.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)

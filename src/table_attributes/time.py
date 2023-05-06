@@ -1,13 +1,10 @@
 from PyQt6.QtWidgets import QLabel
-from datetime import datetime
-from ..dt_helpers import format_datetime
+from ..dt_helpers import format_time
 
 
 class Time(QLabel):
     def __init__(self, project):
-        text = format_datetime(project['dt'])
-        if project['dt'] == datetime.min:
-            text = project['time']
+        text = format_time(project['dt'])
         super().__init__(text)
 
-        self.setStyleSheet('margin-left: 5px')
+        self.setStyleSheet('margin-left: 2px')
