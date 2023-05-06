@@ -1,0 +1,4 @@
+TODO:
+- Refresh button retrieves new projects
+- Show new projects highlighted
+- Favorite and filter options
