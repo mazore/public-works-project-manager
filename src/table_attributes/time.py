@@ -1,5 +1,4 @@
 from PyQt6.QtWidgets import QLabel
-from PyQt6.QtCore import Qt
 from datetime import datetime
 from ..dt_helpers import format_datetime
 

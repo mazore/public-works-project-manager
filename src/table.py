@@ -31,7 +31,7 @@ class Table(QTableWidget):
         self.setRowCount(len(flattened_data))
         for i, project in enumerate(flattened_data):
             self.setCellWidget(i, 0, table_attributes.Time(project))
-            self.setCellWidget(i, 1, QLabel(project['name']))
+            self.setCellWidget(i, 1, table_attributes.Name(project))
             self.setCellWidget(i, 2, table_attributes.Url(project))
 
     def extra_setup(self):
