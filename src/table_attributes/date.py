@@ -10,4 +10,4 @@ class Date(QLabel):
             text = project['time']
         super().__init__(text)
 
-        self.setStyleSheet('margin-left: 5px')
+        self.setStyleSheet('margin-left: 2px;')

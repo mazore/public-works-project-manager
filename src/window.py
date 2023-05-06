@@ -7,6 +7,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle('Public Works Project Manager')
         self.resize(900, 700)
+        self.setMinimumSize(400, 300)
 
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
