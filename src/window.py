@@ -5,7 +5,7 @@ from .table import Table
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('My App')
+        self.setWindowTitle('Public Works Project Manager')
         self.resize(900, 700)
 
         layout = QVBoxLayout()

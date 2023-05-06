@@ -11,4 +11,4 @@ def parse_datetime(str):
 def format_datetime(dt):
     if dt == datetime.min:
         return None
-    return '  ' + datetime.strftime(dt, r'%B %d %Y, %I:%M %p').replace(' 0', ' ')
+    return datetime.strftime(dt, r'%B %d %Y, %I:%M %p').replace(' 0', ' ')

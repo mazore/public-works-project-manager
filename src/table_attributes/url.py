@@ -5,14 +5,14 @@ import webbrowser
 
 
 class Url(QLabel):
-    def __init__(self, url):
+    def __init__(self, project):
         super().__init__('link')
         self.setStyleSheet('''
             color: blue;
             text-decoration: underline;
             margin: 0 20px 0 20px;
         ''')
-        self.url = url
+        self.url = project['url']
 
         cursor = QCursor()
         cursor.setShape(Qt.CursorShape.PointingHandCursor)

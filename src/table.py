@@ -20,15 +20,19 @@ class Table(QTableWidget):
         flattened_data = []
         for city_id, projects in DATA_TEST.items():
             for project in projects:
-                flattened_data.append(dict(**project, city_id=city_id))
+                flattened_data.append({
+                    **project,
+                    'city_id': city_id,
+                    'dt': parse_datetime(project['time'])
+                })
+        flattened_data.sort(key=lambda project: project['dt'], reverse=True)
 
         self.setColumnCount(3)
         self.setRowCount(len(flattened_data))
         for i, project in enumerate(flattened_data):
-            dt = parse_datetime(project['time'])
-            self.setCellWidget(i, 0, table_attributes.Time(dt))
+            self.setCellWidget(i, 0, table_attributes.Time(project))
             self.setCellWidget(i, 1, QLabel(project['name']))
-            self.setCellWidget(i, 2, table_attributes.Url(project['url']))
+            self.setCellWidget(i, 2, table_attributes.Url(project))
 
     def extra_setup(self):
         self.verticalHeader().hide()
