@@ -1,40 +1,31 @@
-from PyQt6.QtWidgets import QTableView, QLabel, QHeaderView, QTableWidget
+from PyQt6.QtWidgets import QTableView, QHeaderView, QTableWidget
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont
-import json
-from .dt_helpers import parse_datetime
 from . import table_attributes
-
-with open('db.json') as f:
-    DATA_TEST = json.load(f)
 
 
 class Table(QTableWidget):
-    def __init__(self):
+    def __init__(self, window):
         super().__init__()
+        self.window = window
+        self.setup()
 
+    def setup(self):
         self.data_setup()
         self.extra_setup()
 
     def data_setup(self):
-        flattened_data = []
-        for city_id, projects in DATA_TEST.items():
-            for project in projects:
-                flattened_data.append({
-                    **project,
-                    'city_id': city_id,
-                    'dt': parse_datetime(project['time'])
-                })
-        flattened_data.sort(key=lambda project: project['dt'], reverse=True)
-
+        self.clearContents()
         self.setColumnCount(5)
-        self.setRowCount(len(flattened_data))
-        for i, project in enumerate(flattened_data):
+        self.setRowCount(len(self.window.data))
+        for i, project in enumerate(self.window.data):
             self.setCellWidget(i, 0, table_attributes.City(project))
             self.setCellWidget(i, 1, table_attributes.Date(project))
             self.setCellWidget(i, 2, table_attributes.Time(project))
             self.setCellWidget(i, 3, table_attributes.Name(project))
             self.setCellWidget(i, 4, table_attributes.Url(project))
+            if project.get('new', False):
+                print(project['name'], 'is new')
 
     def extra_setup(self):
         self.verticalHeader().hide()
