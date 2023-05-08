@@ -1,17 +1,18 @@
-from PyQt6.QtWidgets import QLabel
+from msilib import Table
+from .base import TableAttrBase
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QCursor
 import webbrowser
 
 
-class Url(QLabel):
+class Url(TableAttrBase):
     def __init__(self, project):
-        super().__init__('link')
-        self.setStyleSheet('''
+        style = '''
             color: blue;
             text-decoration: underline;
-            margin: 0 20px 0 20px;
-        ''')
+            padding: 0 20px 0 20px;
+        '''
+        super().__init__(project, 'link', style)
         self.url = project['url']
 
         cursor = QCursor()

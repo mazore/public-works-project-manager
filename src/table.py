@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QTableView, QHeaderView, QTableWidget
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QColor
 from . import table_attributes
 
 
@@ -24,8 +24,8 @@ class Table(QTableWidget):
             self.setCellWidget(i, 2, table_attributes.Time(project))
             self.setCellWidget(i, 3, table_attributes.Name(project))
             self.setCellWidget(i, 4, table_attributes.Url(project))
-            if project.get('new', False):
-                print(project['name'], 'is new')
+            if project.get('new'):
+                print('new project:', project['name'])
 
     def extra_setup(self):
         self.verticalHeader().hide()

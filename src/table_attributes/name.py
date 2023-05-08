@@ -1,7 +1,6 @@
-from PyQt6.QtWidgets import QLabel
+from .base import TableAttrBase
 
 
-class Name(QLabel):
+class Name(TableAttrBase):
     def __init__(self, project):
-        super().__init__(project['name'])
-        self.setStyleSheet('margin-left: 5px;')
+        super().__init__(project, project['name'], 'padding-left: 5px;')

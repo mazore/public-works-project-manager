@@ -1,13 +1,12 @@
-from PyQt6.QtWidgets import QLabel
 from datetime import datetime
+from .base import TableAttrBase
 from ..dt_helpers import format_date
 
 
-class Date(QLabel):
+class Date(TableAttrBase):
     def __init__(self, project):
         text = format_date(project['dt'])
         if project['dt'] == datetime.min:
             text = project['time']
-        super().__init__(text)
 
-        self.setStyleSheet('margin-left: 2px;')
+        super().__init__(project, text, 'padding-left: 2px;')

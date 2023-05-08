@@ -1,10 +1,8 @@
-from PyQt6.QtWidgets import QLabel
+from .base import TableAttrBase
 from ..dt_helpers import format_time
 
 
-class Time(QLabel):
+class Time(TableAttrBase):
     def __init__(self, project):
         text = format_time(project['dt'])
-        super().__init__(text)
-
-        self.setStyleSheet('margin-left: 2px')
+        super().__init__(project, text, 'padding-left: 2px;')
