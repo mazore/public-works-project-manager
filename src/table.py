@@ -16,16 +16,11 @@ class Table(QTableWidget):
 
     def data_setup(self):
         self.clearContents()
-        self.setColumnCount(5)
+        self.setColumnCount(len(table_attributes.attribute_types))
         self.setRowCount(len(self.window.data))
-        for i, project in enumerate(self.window.data):
-            self.setCellWidget(i, 0, table_attributes.City(project))
-            self.setCellWidget(i, 1, table_attributes.Date(project))
-            self.setCellWidget(i, 2, table_attributes.Time(project))
-            self.setCellWidget(i, 3, table_attributes.Name(project))
-            self.setCellWidget(i, 4, table_attributes.Url(project))
-            if project.get('new'):
-                print('new project:', project['name'])
+        for row, project in enumerate(self.window.data):
+            for column, attr_type in enumerate(table_attributes.attribute_types):
+                self.setCellWidget(row, column, attr_type(project))
 
     def extra_setup(self):
         self.verticalHeader().hide()
@@ -34,14 +29,18 @@ class Table(QTableWidget):
         self.setSelectionMode(QTableView.SelectionMode.NoSelection)
         self.setVerticalScrollMode(QTableView.ScrollMode.ScrollPerPixel)
 
-        self.setHorizontalHeaderLabels(['City', 'Date', 'Time', 'Description', 'URL'])
+        self.setHorizontalHeaderLabels(['⭐', 'City', 'Date', 'Time', 'Description', 'URL'])
         header = self.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(0, QHeaderView.ResizeMode.Interactive)
-        header.resizeSection(0, 150)
-        header.setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
-        # header.setSectionsClickable(False)
+
+        header.setSectionsClickable(False)
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)
         header.setFont(font)
+
+        header.setMinimumSectionSize(38)
+        header.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Interactive)
+        header.setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
+        header.resizeSection(0, 38)
+        header.resizeSection(1, 150)

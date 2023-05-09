@@ -1,5 +1,4 @@
 TODO:
-- Build to exe
 - Favorite and filter options
 - Button to clear yellow highlights
 

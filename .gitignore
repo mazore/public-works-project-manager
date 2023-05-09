@@ -1,4 +1,8 @@
 .venv
 **.pyc
+
 build
 dist
+
+db.json
+favorites.json

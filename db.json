@@ -73,7 +73,13 @@
         }
     ],
     "625": [],
-    "19": [],
+    "19": [
+        {
+            "time": "5/25/2023 @ 1:00 pm PDT",
+            "name": "2023 Duvall WWTP Office Remodel, City of Duvall, WA",
+            "url": "http://www.bxwa.com/bxwa_toc/pub/262/duv26_2023_duvall_wwtp_office_22045/info.php"
+        }
+    ],
     "792": [
         {
             "time": "5/23/2023 @ 2:00 pm PDT",
@@ -282,6 +288,16 @@
     ],
     "283": [
         {
+            "time": "5/23/2023 @ 2:00 pm PDT",
+            "name": "2023 Residential Street Overlays, City of Mercer Island, WA #23-16",
+            "url": "http://www.bxwa.com/bxwa_toc/pub/283/mi30_2023_residential_street_o_85245/info.php"
+        },
+        {
+            "time": "5/22/2023 @ 11:00 am PDT",
+            "name": "2023 Street Related Storm Drainage Improvements, City of Mercer Island, WA #23-18",
+            "url": "http://www.bxwa.com/bxwa_toc/pub/283/mi29_2023_street_related_storm_49143/info.php"
+        },
+        {
             "time": "12/20/2022 @ 10:00 am PST",
             "name": "North and South Reservoir Improvements, City of Mercer Island, WA #22-40",
             "url": "http://www.bxwa.com/bxwa_toc/pub/283/mi27_north_and_south_reservoir_33107/info.php"
@@ -331,7 +347,7 @@
     ],
     "656": [
         {
-            "time": "5/11/2023 @ 11:00 am PDT",
+            "time": "5/18/2023 @ 11:00 am PDT",
             "name": "156th Avenue NE Cycle Track, City of Redmond, WA #20022001",
             "url": "http://www.bxwa.com/bxwa_toc/pub/1749/red60_156th_avenue_ne_cycle_tr_78077/info.php"
         },
@@ -1163,6 +1179,11 @@
     ],
     "1520": [],
     "777": [
+        {
+            "time": "5/23/2023 @ 9:00 am PDT",
+            "name": "2023 Turn Lane Expansion, Woodinville Water District, Woodinville, WA #2-20",
+            "url": "http://www.bxwa.com/bxwa_toc/pub/2173/wwd28_2023_turn_lane_expansion_19685/info.php"
+        },
         {
             "time": "1/13/2023 @ 1:00 pm PST",
             "name": "Bard Reservoir Recoating, Woodinville Water District, Woodinville, WA #1-22",
