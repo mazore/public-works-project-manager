@@ -1,27 +1,13 @@
 from PyQt6.QtWidgets import QCheckBox
 from PyQt6.QtCore import Qt
-import os.path
-import json
-
-print('loading favorites data')
-if not os.path.exists('favorites.json'):
-    print('creating new favorites file')
-    with open('favorites.json', 'w') as f:
-        json.dump([], f)
-    favorites = []
-else:
-    with open('favorites.json') as f:
-        favorites = json.load(f)
-
-# Remove duplicates just in case
-favorites = list(set(favorites))
+from ..favorites_api import favorites_api
 
 
 class Favorite(QCheckBox):
     def __init__(self, project):
         super().__init__()
         self.project = project
-        if project['url'] in favorites:
+        if favorites_api.is_favorite(project):
             self.setCheckState(Qt.CheckState.Checked)  # Set checked
 
         self.stateChanged.connect(self.onStateChanged)
@@ -33,9 +19,6 @@ class Favorite(QCheckBox):
 
     def onStateChanged(self, state):
         if state == 2:  # Checked
-            favorites.append(self.project['url'])
+            favorites_api.add_favorite(self.project)
         elif state == 0:  # Unchecked
-            favorites.remove(self.project['url'])
-
-        with open('favorites.json', 'w') as f:
-            json.dump(favorites, f, indent=4)
+            favorites_api.remove_favorite(self.project)

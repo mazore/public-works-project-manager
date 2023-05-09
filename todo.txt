@@ -1,6 +1,7 @@
 TODO:
-- Favorite and filter options
 - Button to clear yellow highlights
+- Show a no changes message
+- Show time the project was scraped
 
 
 Command to build: pyinstaller --clean -y -n "Public Works Project Manager" --noconsole --add-data="files\city_ids.csv;files" app.py

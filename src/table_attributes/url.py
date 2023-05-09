@@ -10,7 +10,7 @@ class Url(TableAttrBase):
         style = '''
             color: blue;
             text-decoration: underline;
-            padding: 0 20px 0 20px;
+            padding: 0 10px 0 10px;
         '''
         super().__init__(project, 'link', style)
         self.url = project['url']

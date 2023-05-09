@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QTableView, QHeaderView, QTableWidget
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QFont, QColor
+from PyQt6.QtGui import QFont
 from . import table_attributes
 
 
@@ -15,10 +15,13 @@ class Table(QTableWidget):
         self.extra_setup()
 
     def data_setup(self):
+        data = self.window.data
+        filtered_data = list(filter(self.window.data_filter_function, data))
+
         self.clearContents()
         self.setColumnCount(len(table_attributes.attribute_types))
-        self.setRowCount(len(self.window.data))
-        for row, project in enumerate(self.window.data):
+        self.setRowCount(len(filtered_data))
+        for row, project in enumerate(filtered_data):
             for column, attr_type in enumerate(table_attributes.attribute_types):
                 self.setCellWidget(row, column, attr_type(project))
 

@@ -4,7 +4,14 @@ import sys
 import os.path
 from .controls import Controls
 from .dt_helpers import parse_datetime
+from .favorites_api import favorites_api
 from .table import Table
+
+DATA_FILTER_FUNCTIONS = [
+    lambda _: True,  # No filter, all projects
+    lambda project: favorites_api.is_favorite(project),  # Only include favorites
+    lambda project: not favorites_api.is_favorite(project)  # Don't include favorites
+]
 
 
 class MainWindow(QMainWindow):
@@ -15,6 +22,7 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(400, 300)
 
         self.load_data_from_db_file()
+        self.data_filter_function = DATA_FILTER_FUNCTIONS[0]  # Start with no filter
         self.controls = Controls(self)
         self.table = Table(self)
 
@@ -31,6 +39,11 @@ class MainWindow(QMainWindow):
     def keyPressEvent(self, key):
         if key.text() == 'q':
             sys.exit()
+
+    def apply_filter(self, filter_index):
+        """0: All projects, 1: Favorites only, 2: Non-favorites only"""
+        self.data_filter_function = DATA_FILTER_FUNCTIONS[filter_index]
+        self.table.setup()
 
     def load_data_from_db_file(self):
         """Flattened data list parsed from db including parsed dt and city_id"""

@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QPushButton, QProgressBar, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QComboBox, QPushButton, QProgressBar, QHBoxLayout
 from PyQt6.QtCore import Qt, QObject, QThread, pyqtSignal
 import json
 import os.path
@@ -14,6 +14,12 @@ class Controls(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
+        filter_box = QComboBox()
+        filter_box.addItems(['All projects', 'Favorites only', 'Non-favorites only'])
+        filter_box.keyPressEvent = window.keyPressEvent
+        filter_box.activated.connect(self.window.apply_filter)
+        layout.addWidget(filter_box)
+
         refresh = QPushButton('Refresh')
         refresh.clicked.connect(self.refresh)
         layout.addWidget(refresh)
@@ -22,8 +28,6 @@ class Controls(QWidget):
         self.progress_bar.setMaximum(len(CITY_ID_NAME_MAP))
         self.progress_bar.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         layout.addWidget(self.progress_bar)
-
-        # layout.addStretch()
 
     def refresh(self):
         if os.path.exists('db.json'):
