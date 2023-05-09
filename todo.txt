@@ -1,3 +1,7 @@
 TODO:
+- Build to exe
 - Favorite and filter options
 - Button to clear yellow highlights
+
+
+Command to build: pyinstaller --clean -y -n "Public Works Project Manager" --noconsole --add-data="files\city_ids.csv;files" app.py

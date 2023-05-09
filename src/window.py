@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout
 import json
+import sys
 import os.path
 from .controls import Controls
 from .dt_helpers import parse_datetime
@@ -29,7 +30,7 @@ class MainWindow(QMainWindow):
 
     def keyPressEvent(self, key):
         if key.text() == 'q':
-            quit()
+            sys.exit()
 
     def load_data_from_db_file(self):
         """Flattened data list parsed from db including parsed dt and city_id"""
